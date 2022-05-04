@@ -227,6 +227,10 @@ async def settings_password():
 async def rules():
     return await render_template('rules.html')
 
+@frontend.route('/staff')
+async def staff():
+    return await render_template('staff.html')
+
 @frontend.route('/settings/password', methods=["POST"])
 @login_required
 async def settings_password_post():
@@ -594,6 +598,10 @@ async def youtube_redirect():
 @frontend.route('/twitter')
 async def twitter_redirect():
     return redirect(glob.config.twitter)
+
+@frontend.route('/website')
+async def website():
+    return redirect(glob.config.website)
 
 @frontend.route('/instagram')
 @frontend.route('/ig')
