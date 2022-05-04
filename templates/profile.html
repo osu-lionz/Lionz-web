@@ -355,7 +355,7 @@
                                 <td>Joined</td>
                                 <td class="right-aligned">
                                     <span id="creation" style="font-size: 15">
-                                        {{ user['creation_time'] }}
+                                        {{ timeago.format(user['creation_time']) }}
                                     </span>
                                 </td>
                             </tr>
@@ -363,7 +363,7 @@
                                 <td>Last seen</td>
                                 <td class="right-aligned">
                                     <span id="latest" v-if="data.status.online == false" style="font-size: 15">
-                                        {{ user['latest_activity'] }}
+                                        {{ timeago.format(user['latest_activity']) }}
                                     </span>
                                     <span id="latest" v-if='data.status.online == true'>
                                         just now!
