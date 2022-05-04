@@ -24,11 +24,11 @@
                             </a>
                         </div>
                         <div class="map-title">
-                            <% addCommas(map.score) %> - <% map.max_combo %>/<% map.beatmap.max_combo %><b>x</b> <span style="color: #E481A2;" v-if="map.mods != 0">+<% modsStr(map.mods) %></span>
+                            <% addCommas(map.score) %> - <% map.max_combo %>/<% map.beatmap.max_combo %><b>x</b> <span style="color: rgb(255, 93, 255)" v-if="map.mods != 0">+<% modsStr(map.mods) %></span>
                         </div>
                         <div class="map-date">
                             <time>
-                                <% timeago.format(map.play_time + ' UTC-0') %>
+                                <% timeago.format(map.play_time + ' UTC-0') %> <i><a v-if="map.grade != 'F'" :href="map.replayurl" class="fas fa-download"></a></i>
                             </time>
                         </div>
                     </div>
@@ -133,6 +133,7 @@
     var mods = '{{ mods }}';
     var domain = "{{ domain() }}";
 </script>
+<style>html {--main: 300;}</style>
 {% endblock %}
 
 {% block content %}
