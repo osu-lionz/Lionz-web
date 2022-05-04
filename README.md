@@ -1,3 +1,8 @@
+Lionz-web is the front-end service of the server.
+
+For the original please refer to https://github.com/Varkaria/guweb
+
+
 Table of Contents
 ==================
 - [Table of Contents](#table-of-contents)
