@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock %}
+
+{% block header %}
+<link rel="stylesheet" href="/static/css/pages/home.css">
+<link rel="stylesheet" href="/static/css/pages/faq.css?3">
+<style>html {--main: 300;}</style>
+{% endblock %}
+
+{% block content %}
+
+{% if flash %}
+<div class='noti-banner noti-banner-warning'>
+  <div class="container">
+    <div class="noti-column">
+      <div class='noti-col noti-col-icon'></div>
+      <div class='noti-col noti-col-label'>
+        <div class='noti-bannertype'>
+          {% if status=='error' %}
+          Warning
+          {% elif status=='success' %}
+          Notice
+          {% endif %}
+        </div>
+        <div class='noti-bannertext'>
+          {% if status=='error' %}
+          Uh oh! Be careful!
+          {% elif status=='success' %}
+          Hey! Listen!
+          {% endif %}
+        </div>
+      </div>
+      <div class='noti-banner-text'>
+        {{ flash }}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<div class="hero splash p-less is-fullheight-with-navbar" id="home-hero">
+  <div class="container flex">
+    <div class="columns flex-vcenter">
+      <div class="column flex-vcenter flex-lcenter is-size-2-desktop is-size-1-fullhd" id="title">
+        <br>
+        <div class="leaderboard-banner main-banner">
+          <div class="main-selector">
+              <a class="mode-select" v-bind:class="{ 'active': mode === 'std' }"
+              @click="LoadLeaderboard(sort, 'std', mods)">
+              </a>
+              <a class="mode-select" v-bind:class="{ 'active': mode === 'taiko', 'disabled': mods === 'ap' }"
+              @click="LoadLeaderboard(sort, 'taiko', mods)">
+              </a>
+              <a class="mode-select" v-bind:class="{ 'active': mode === 'catch', 'disabled': mods === 'ap' }"
+              @click="LoadLeaderboard(sort, 'catch', mods)">
+              </a>
+              <a class="mode-select" v-bind:class="{ 'active': mode === 'mania', 'disabled': mods === 'ap' || mods === 'rx' }"
+              @click="LoadLeaderboard(sort, 'mania', mods)">
+              </a>
+          </div>
+          <div class="banner-text">FAQ</div>
+          <div class="selector">
+              <div class="left">
+                  <a class="simple-banner-switch" v-bind:class="{ 'active': sort === 'pp' }"
+                  @click="LoadLeaderboard('pp', mode, mods, '')"></a>
+                  <a class="simple-banner-switch" v-bind:class="{ 'active': sort === 'rscore' }"
+                  @click="LoadLeaderboard('rscore', mode, mods, '')"></a>
+              </div>
+              <div class="right">
+                  <a class="simple-banner-switch" v-bind:class=" { 'active': mods === 'vn' }"
+                  @click="LoadLeaderboard(sort, mode, 'vn')"></a>
+                  <a class="simple-banner-switch" v-bind:class=" { 'active': mods === 'rx', 'disabled': mode === 'mania' }"
+                  @click="LoadLeaderboard(sort, mode, 'rx')"></a>
+                  <a class="simple-banner-switch" v-bind:class=" { 'active': mods === 'ap', 'disabled': mode === 'taiko' || mode === 'catch' || mode === 'mania'  }"
+                  @click="LoadLeaderboard(sort, mode, 'ap')"></a>
+              </div>
+          </div>
+      </div>
+      <div class="main-block">
+          <div class="leaderboard-main-bg table-responsive">
+              <div v-if="boards.length != undefined && boards.length != 0">
+                  <table class="leaderboard-table table-responsive">
+                    <h2 class="subtitle">
+                      Q: I didn’t receive the verification email, I cannot verify my account!<br>
+                      A: There is no verification process.<br> 
+                      In order to activate the account, you simply have to log in
+                      through the game. You can read all the required steps on our connection guide.
+                      <br>
+                      <br>
+                      Q: I get “Bancho authentication failed” (wrong password) when I try to log in, but my password is
+                      correct!<br>
+                      A: First, make sure you’re connected to leeuwz.nl and that your password is
+                      correct.<br> 
+                      If so, type your password slowly. (make also sure that
+                      caps lock is disabled).<br>
+                      <br>
+                      Q: I can’t download maps from osu!direct.<br>
+                      A: Direct doesn't work on the main menu but it should be fine if you download
+                      a map that was sent to you in-game.<br>
+                      <br>
+                      Q: I uploaded my avatar but it won't show.<br>
+                      A: Make sure it succesfully changed then hit CTRL+F5 to refresh the page and its cache.<br>
+                      <br>
+                      Q: How do I play on the normal osu! again?<br> 
+                      A: Close osu!, and run default osu.exe or default shortcut.<br>
+                      <br>
+                      Q: Can I keep playing while the server is restarting because it’s updating?<br> 
+                      A: Yes, your scores will be sent as soon as the server gets back online<br> 
+                      (aslong as you keep the game open untill it is back).<br> 
+                      <br>
+                      Q: Why are osu!direct and other supporter perks free?<br> 
+                      A: We think that osu! direct is very cool and it’s a shame people have to pay for it<br> 
+                      or to have profile banners and profile backgrounds, that’s why we’re offering it for free. If you like what we do, please consider a donation.<br>
+                      <br>
+                      Q: My problem is not listed here.<br> 
+                      A: Join our discord and ask your question in the channels of the server.<br>
+                      <br>
+                      Q: How to get a check mark for a legitimate player? (Verified Legit Player)<br>
+                      A: Apart from our close friends, we issue this checkbox in cases
+                      when a good player enters the server with a strong skill set or high pp farm skills.
+                      Sometimes staff can request a live play, in order to make sure of a player's legitamicy.
+                      requirements for the right to apply for the status of a legitimate player (So
+                      far only STD): 7.5k+ pp 450+ pp score on a non-farm map, or 500-550 on farm map.
+                      You will be required to stream or record the liveplay, adhering to these rules: The monitor must be visible
+                      on the camera. All two hands are visible The sound of the keyboard is clearly
+                      audible in the video Scenario: You turn on the recording, after it, ideally,
+                      start the computer (before turning it off), then open the game and play the map
+                      that we asked for, in some cases that you yourself choose, in accordance with
+                      the requirements for the expected level of your game. You must also link
+                      the replay you played on liveplay. There are almost no requirements for the
+                      stream, you should play on the stream at your level, since the cheats are not
+                      adapted for unexpected play on the stream.<br>
+                    </h2>
+                  </table>
+              </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}
