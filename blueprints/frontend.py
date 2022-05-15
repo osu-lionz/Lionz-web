@@ -6,6 +6,7 @@ import bcrypt
 import hashlib
 import os
 import time
+import timeago
 
 from cmyui.logging import Ansi
 from cmyui.logging import log
@@ -54,6 +55,7 @@ async def home_account_edit():
 @login_required
 async def settings_profile():
     return await render_template('settings/profile.html')
+    
 
 @frontend.route('/settings/profile', methods=['POST'])
 @login_required
@@ -231,6 +233,10 @@ async def rules():
 async def staff():
     return await render_template('staff.html')
 
+@frontend.route('/faq')
+async def faq():
+    return await render_template('faq.html')
+
 @frontend.route('/settings/password', methods=["POST"])
 @login_required
 async def settings_password_post():
@@ -336,7 +342,7 @@ async def profile_select(id):
     user_data['creation_time'] = datetime.fromtimestamp(float(user_data['creation_time']))
     user_data['latest_activity'] = datetime.fromtimestamp(float(user_data['latest_activity']))
     user_data['customisation'] = utils.has_profile_customizations(user_data['id'])
-    return await render_template('profile.html', user=user_data, mode=mode, mods=mods)
+    return await render_template('profile.html', user=user_data, mode=mode, mods=mods, datetime=datetime, timeago=timeago)
 
 
 @frontend.route('/leaderboard')
