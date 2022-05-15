@@ -7,6 +7,7 @@
 <script>
     var domain = "{{ domain() }}";
 </script>
+<style>html {--main: 120;}</style>
 {% endblock%}
 
 {% block content %}
@@ -17,7 +18,7 @@
             <div class="card">
                 <div class="title">total users</div>
                 <i class="fa fa-users"></i>
-                <div class="value">{{ dashdata['count'] }}</div>
+                <div class="value">{{ dashdata['count']-4 }}</div>
                 <div class="stat">that's a lot of people!</div>
             </div>
         </div>
