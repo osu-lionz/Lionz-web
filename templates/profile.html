@@ -146,9 +146,9 @@
                         <img src="/static/images/flags/{{ user['country']|upper }}.png" class="profile-flag">
                         <span class="bgf">{{ user['name'] }}</span>
                         <img v-if="{{ user['id'] }} == 3" src="https://i.imgur.com/rvkCcfp.png" title="Lionz Owner"/>
-                        <img v-if="{{ user['id'] }} == 3" src="https://i.imgur.com/hlbsaVz.png" title="Lionz Developer"/>
+                        <!--<img v-if="{{ user['id'] }} == 3" src="https://i.imgur.com/hlbsaVz.png" title="Lionz Developer"/>
                         <img v-if="{{ user['id'] }} == 3" src="https://i.imgur.com/FJPjCrS.png" title="Lionz Beatmap Nominator"/>
-                        <img v-if="{{ user['id'] }} == 5" src="https://i.imgur.com/FJPjCrS.png" title="Lionz Beatmap Nominator"/>
+                        <img v-if="{{ user['id'] }} == 5" src="https://i.imgur.com/FJPjCrS.png" title="Lionz Beatmap Nominator"/>-->
                     </p>
                 </h1>
                 <transition name="fade">
@@ -206,13 +206,14 @@
             </div>
             <div class="bar-selection badge-selects">
                 <span>
-                    <span v-if="{{ user['id'] }} == 3" style="font-size: 16; color: #28a40c;" title="Verified Legit Player"><i class="fas fa-check"></i>  verified</span><span>&nbsp;&nbsp;&nbsp;</span><span v-if="{{ user['id'] }} == 3" style="font-size: 16; color:fuchsia;" title="Certified Cutie"><i class="fa-regular fa-heart"></i>  cutie</span><span>&nbsp;&nbsp;&nbsp;</span><span v-if="{{ user['id'] }} == 3" style="font-size: 16; color: fuchsia;" title="Lionz Developer"><i class="fa-solid fa-code"></i>  developer</span>
+                    <span v-if="{{ user['id'] }} == 3" style="font-size: 16; color: fuchsia;" title="Lionz Developer"><i class="fa-solid fa-code"></i>  developer</span><span>&nbsp;&nbsp;&nbsp;</span><span v-if="{{ user['id'] }} == 3" style="font-size: 16; color:#fa117e;" title="Certified Cutie"><i class="fa-regular fa-heart"></i>  cutie</span><span>&nbsp;&nbsp;&nbsp;</span><span v-if="{{ user['id'] }} == 3" style="font-size: 16; color: #28a40c;" title="Verified Legit Player"><i class="fas fa-check"></i>  verified</span>
                     <span v-if="{{ user['id'] }} == 6" style="font-size: 16; color: #28a40c;" title="Verified Legit Player"><i class="fas fa-check"></i>  verified</span>
-                    <span v-if="{{ user['id'] }} == 14" style="font-size: 16; color:fuchsia;" title="Certified Cutie"><i class="fa-regular fa-heart"></i>  cutie</span>
-                    <span v-if="{{ user['id'] }} == 5" style="font-size: 16; color: #28a40c;" title="Verified Legit Player"><i class="fas fa-check"></i>  verified</span><span>&nbsp;&nbsp;&nbsp;</span><span v-if="{{ user['id'] }} == 5" style="font-size: 16; color:fuchsia;" title="Certified Cutie"><i class="fa-regular fa-heart"></i>  cutie</span>
-                    <span v-if="{{ user['id'] }} == 6" style="font-size: 16; color:fuchsia;" title="Certified Cutie"><i class="fa-regular fa-heart"></i>  cutie</span>
-                    <span v-if="{{ user['id'] }} == 7" style="font-size: 16; color:fuchsia;" title="Certified Cutie"><i class="fa-regular fa-heart"></i>  cutie</span>
+                    <span v-if="{{ user['id'] }} == 14" style="font-size: 16; color: #fa117e;" title="Certified Cutie"><i class="fa-regular fa-heart"></i>  cutie</span>
+                    <span v-if="{{ user['id'] }} == 5" style="font-size: 16; color: #28a40c;" title="Verified Legit Player"><i class="fas fa-check"></i>  verified</span><span>&nbsp;&nbsp;&nbsp;</span><span v-if="{{ user['id'] }} == 5" style="font-size: 16; color: #fa117e;" title="Certified Cutie"><i class="fa-regular fa-heart"></i>  cutie</span>
+                    <span v-if="{{ user['id'] }} == 6" style="font-size: 16; color: #fa117e;" title="Certified Cutie"><i class="fa-regular fa-heart"></i>  cutie</span>
+                    <span v-if="{{ user['id'] }} == 7" style="font-size: 16; color: #fa117e;" title="Certified Cutie"><i class="fa-regular fa-heart"></i>  cutie</span>
                     <span v-if="{{ user['id'] }} == 4" style="font-size: 16; color: #28a40c;" title="Verified Legit Player"><i class="fas fa-check"></i>  verified</span>
+                    <span v-if="{{ user['id'] }} == 10" style="font-size: 16; color: #28a40c;" title="Verified Legit Player"><i class="fas fa-check"></i>  verified</span>
                 </span>
             </div>
         </div>
